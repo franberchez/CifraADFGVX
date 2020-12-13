@@ -32,6 +32,9 @@ function mensaje_cifrado = cifrado(mensaje,publica,privada)
 
     % Convertimos el mensaje sustituido en una matriz con tantas columnas
     % como letras tenga la clave privada.
+    while mod(length(mensaje_sustituido)/length(privada),1)~=0
+       mensaje_sustituido=strcat(mensaje_sustituido,'X'); 
+    end
     mensaje_sustituido = reshape(mensaje_sustituido,length(privada),length(mensaje_sustituido)/length(privada))';
     
     % Ordeno la matriz por columnas en base a la ordenacion alfabetica de
