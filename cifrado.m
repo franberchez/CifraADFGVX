@@ -15,6 +15,7 @@ function mensaje_cifrado = cifrado(mensaje,publica,privada)
         mensaje_cifrado = 0;
         return;
     end
+    publica=upper(publica);
     
     % Compruebo la clave privada introducida
     if(~ischar(privada))
@@ -22,6 +23,8 @@ function mensaje_cifrado = cifrado(mensaje,publica,privada)
         mensaje_cifrado = 0;
         return;
     end
+    privada=upper(privada);
+    privada = unique(privada,'stable');
     
     % Obtengo la matriz de cifrado a partir de la clave publica
     matriz_cifrado = init_matrix(publica);

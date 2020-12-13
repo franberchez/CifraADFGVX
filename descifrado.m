@@ -23,6 +23,7 @@ function mensaje_des = descifrado(mensaje, publica, privada)
         return;
     end
     privada = upper(privada);
+    privada = unique(privada,'stable');
     
     % Dividimos el mensaje cifrado en bloques de longitud del mensaje /
     % longitud de la clave privada.
@@ -40,7 +41,7 @@ function mensaje_des = descifrado(mensaje, publica, privada)
     % deshacer las permutaciones realizadas.
     priv_ordenada = sort(privada);
     matriz = vertcat(priv_ordenada,matriz);
-    
+
     % Utilizamos una matriz auxiliar para deshacer la permutación
     matriz_desordenada = char(zeros(tam_bloque,length(privada))+'0');
     for i=1:length(privada)
